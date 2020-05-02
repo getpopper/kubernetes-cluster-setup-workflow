@@ -2,28 +2,20 @@ version: 1.0
 steps:
   - id: setup cluster
     uses: docker://popperized/ansible:v2.9
-    args: '-i hosts.ini playbooks/initial.yml'
-    env:
-      ANSIBLE_HOST_KEY_CHECKING: False
+    args: '-i ansible/hosts.ini ansible/playbooks/initial.yml'
     secrets: [ANSIBLE_SSH_KEY_DATA]
 
   - id: install dependencies
     uses: docker://popperized/ansible:v2.9
-    args: '-i hosts.ini playbooks/kube-dependencies.yml'
-    env:
-      ANSIBLE_HOST_KEY_CHECKING: False
+    args: '-i ansible/hosts.ini ansible/playbooks/kube-dependencies.yml'
     secrets: [ANSIBLE_SSH_KEY_DATA]
 
   - id: setup master node
     uses: docker://popperized/ansible:v2.9
-    args: '-i hosts.ini playbooks/master.yml'
-    env:
-      ANSIBLE_HOST_KEY_CHECKING: False
+    args: '-i ansible/hosts.ini ansible/playbooks/master.yml'
     secrets: [ANSIBLE_SSH_KEY_DATA]
 
   - id: setup worker nodes
     uses: docker://popperized/ansible:v2.9
-    args: '-i hosts.ini playbooks/workers.yml'
-    env:
-      ANSIBLE_HOST_KEY_CHECKING: False
+    args: '-i ansible/hosts.ini ansible/playbooks/workers.yml'
     secrets: [ANSIBLE_SSH_KEY_DATA]
