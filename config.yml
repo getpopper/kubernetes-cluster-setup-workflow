@@ -1,6 +1,6 @@
 engine:
     name: docker
     options:
-        volumes: [/Users/jayjeetchakraborty/.ssh/id_rsa_kube.pub:/root/.ssh/id_rsa_kube.pub]
+        volumes: [/Users/jayjeetchakraborty/.ssh/:/root/.ssh]
         environment:
             ANSIBLE_HOST_KEY_CHECKING: false

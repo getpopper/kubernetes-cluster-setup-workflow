@@ -1,5 +1,16 @@
 version: 1.0
 steps:
+  - id: setup nodes
+    uses: docker://popperized/geni:v0.9.9.2
+    args: ./geni/setup-nodes.py
+    secrets:
+      - GENI_FRAMEWORK
+      - GENI_PROJECT
+      - GENI_USERNAME
+      - GENI_KEY_PASSPHRASE
+      - GENI_PUBKEY_DATA
+      - GENI_CERT_DATA
+
   - id: setup cluster
     uses: docker://popperized/ansible:v2.9
     args: '-i ansible/hosts.yml ansible/playbooks/initial.yml'
@@ -29,3 +40,14 @@ steps:
     args: '-i ansible/hosts.yml ansible/playbooks/deploy.yml'
     secrets:
       - ANSIBLE_SSH_KEY_DATA
+
+  - id: release nodes
+    uses: docker://popperized/geni:v0.9.9.2
+    args: ./geni/release.py
+    secrets:
+      - GENI_FRAMEWORK
+      - GENI_PROJECT
+      - GENI_USERNAME
+      - GENI_KEY_PASSPHRASE
+      - GENI_PUBKEY_DATA
+      - GENI_CERT_DATA
