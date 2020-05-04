@@ -4,3 +4,5 @@ engine:
         volumes: [/Users/jayjeetchakraborty/.ssh:/root/.ssh]
         environment:
             ANSIBLE_HOST_KEY_CHECKING: false
+            NODES: 5
+            NODE_HARDWARE: m400
