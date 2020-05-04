@@ -7,7 +7,7 @@ A [popper](https://github.com/systemslab/popper) workflow to setup a 3 node kube
 * Set the `geni-lib` secret variables as given [here](https://github.com/popperized/library/tree/master/geni#secrets) and the `ansible` secret
 variables as given [here](https://github.com/popperized/library/tree/master/ansible#secrets).
 
-* Change the volume binding in `config.yml` according to your environment.
+* Change the volume binding in [`config.yml`](https://github.com/JayjeetAtGithub/kubernetes-cluster-popper/blob/master/config.yml#L4) according to your environment.
 
 * Execute the workflow with popper.
 ```
