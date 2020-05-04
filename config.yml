@@ -4,5 +4,7 @@ engine:
         volumes: [/Users/jayjeetchakraborty/.ssh:/root/.ssh]
         environment:
             ANSIBLE_HOST_KEY_CHECKING: false
-            NODES: 5
+            NODES: 2
             NODE_HARDWARE: m400
+            NODE_CLUSTER: utah
+            NODE_SLICE_NAME: test-slice
