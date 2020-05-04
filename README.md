@@ -1,6 +1,6 @@
 # Kubernetes Cluster With Popper
 
-A [popper](https://github.com/systemslab/popper) workflow to setup a 3 node kubernetes cluster in cloudlab.us.
+A [popper](https://github.com/systemslab/popper) workflow to setup a kubernetes cluster in cloudlab.us.
 
 ## Running instructions
 
@@ -18,3 +18,10 @@ $ popper run -f wf.yml -c config.yml --skip 'release nodes'
 ```
 $ popper run -f wf.yml -c config.yml 'release nodes'
 ```
+
+**NOTE**: The configuration of the cluster is described by
+the following environment variables defined in `config.yml`:
+* `NODES`: Specifies the size of the kubernetes cluster.
+* `NODE_HARDWARE`: Specifies the compute hardware for the nodes.
+* `NODE_CLUSTER`: Specifies the cloudlab cluster to use.
+* `NODE_SLICE_NAME`: Specifies the name of the slice.
