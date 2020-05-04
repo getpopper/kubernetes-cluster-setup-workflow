@@ -1,1 +1,4 @@
 .env
+ansible/playbooks/*.retry
+ansible/hosts.yml
+
