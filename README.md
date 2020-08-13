@@ -11,12 +11,12 @@ variables as given [here](https://github.com/popperized/library/tree/master/ansi
 
 * Execute the workflow with popper.
 ```
-$ popper run -f wf.yml -c config.yml --skip 'release nodes'
+$ popper run -f wf.yml -c config.yml --skip teardown-cluster
 ```
 
 * Release the nodes in the cluster.
 ```
-$ popper run -f wf.yml -c config.yml 'release nodes'
+$ popper run -f wf.yml -c config.yml teardown-cluster
 ```
 
 **NOTE**: The configuration of the cluster is described by
