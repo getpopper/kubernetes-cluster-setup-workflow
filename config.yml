@@ -5,6 +5,6 @@ engine:
         environment:
             ANSIBLE_HOST_KEY_CHECKING: false
             NODES: 2
-            NODE_HARDWARE: c8220
+            NODE_HARDWARE: c6320
             NODE_CLUSTER: clemson
-            NODE_SLICE_NAME: test-slice
+            NODE_SLICE_NAME: k8s-slice-02

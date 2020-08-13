@@ -1,7 +1,7 @@
 - hosts: all
   become: yes
   tasks:
-   - name: install Docker
+   - name: install docker
      apt:
        name: docker.io
        state: present
@@ -12,12 +12,12 @@
        name: apt-transport-https
        state: present
 
-   - name: add Kubernetes apt-key
+   - name: add kubernetes apt-key
      apt_key:
        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
        state: present
 
-   - name: add Kubernetes' APT repository
+   - name: add kubernetes' APT repository
      apt_repository:
       repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
       state: present

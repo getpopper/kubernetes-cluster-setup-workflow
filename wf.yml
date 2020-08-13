@@ -1,8 +1,7 @@
-version: 1.0
 steps:
-  - id: setup nodes
+  - id: setup-nodes
     uses: docker://popperized/geni:v0.9.9.2
-    args: ./geni/setup-nodes.py
+    args: [./geni/setup-nodes.py]
     secrets:
       - GENI_FRAMEWORK
       - GENI_PROJECT
@@ -11,39 +10,39 @@ steps:
       - GENI_PUBKEY_DATA
       - GENI_CERT_DATA
 
-  - id: setup cluster
+  - id: setup-cluster
     uses: docker://popperized/ansible:v2.9
-    args: '-i ansible/hosts.yml ansible/playbooks/initial.yml'
+    args: [-i, ansible/hosts.yml ansible/playbooks/initial.yml]
     secrets:
       - ANSIBLE_SSH_KEY_DATA
 
-  - id: install dependencies
+  - id: install-dependencies
     uses: docker://popperized/ansible:v2.9
-    args: '-i ansible/hosts.yml ansible/playbooks/kube-dependencies.yml'
+    args: [-i, ansible/hosts.yml ansible/playbooks/kube-dependencies.yml]
     secrets:
       - ANSIBLE_SSH_KEY_DATA
 
-  - id: setup master node
+  - id: setup-master-node
     uses: docker://popperized/ansible:v2.9
-    args: '-i ansible/hosts.yml ansible/playbooks/master.yml'
+    args: [-i, ansible/hosts.yml ansible/playbooks/master.yml]
     secrets:
       - ANSIBLE_SSH_KEY_DATA
 
-  - id: setup worker nodes
+  - id: setup-worker-nodes
     uses: docker://popperized/ansible:v2.9
-    args: '-i ansible/hosts.yml ansible/playbooks/workers.yml'
+    args: [-i, ansible/hosts.yml ansible/playbooks/workers.yml]
     secrets:
       - ANSIBLE_SSH_KEY_DATA
 
-  - id: deploy nginx
+  - id: deploy-nginx
     uses: docker://popperized/ansible:v2.9
-    args: '-i ansible/hosts.yml ansible/playbooks/deploy.yml'
+    args: [-i,  ansible/hosts.yml ansible/playbooks/deploy.yml]
     secrets:
       - ANSIBLE_SSH_KEY_DATA
 
-  - id: release nodes
+  - id: teardown-cluster
     uses: docker://popperized/geni:v0.9.9.2
-    args: ./geni/release.py
+    args: [./geni/release.py]
     secrets:
       - GENI_FRAMEWORK
       - GENI_PROJECT

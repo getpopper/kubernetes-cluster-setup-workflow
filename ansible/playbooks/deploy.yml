@@ -1,6 +1,5 @@
 - hosts: master
   become: yes
-  become_user: ubuntu
   tasks:
     - name: create deployment
       shell: kubectl create deployment nginx --image=nginx
